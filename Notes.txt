@@ -1,0 +1,20 @@
+-----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------Introducción
+
+DOCKER
+    Es una herramienta que permite desplegar aplicaciones en contenedores, de forma rápida y portable, está compuesto por imágenes (toda la configuración que el software necesita, librerias, aplicaciones...) y contenedores (donde se vuelve realidad)
+
+ARQUITECTURA
+    -Docker Host: Lugar donde se aloja Docker
+    -Docker Daemon: El que da todos los servicios al sistema, reside en el host
+    -Rest API: Intermediario entre el Cliente y el Server
+    -Docker CLI - Client: Reside en el host, cuando se escribe algún comando Docker, se pueden manejar Contenedores, imágenes, Volúmenes y Redes
+    
+IMAGEN
+    Contiene toda la configuración necesaria para que funcionen el servicio en un archivo llamado Dockerfile, se puede componen de muchas capas y estas capas son de solo lectura, algunas son:
+        1-FROM: Ubicación del SO
+        2-RUN: Instalación de paquetes
+        3-CMD: Levanta el servicio o, un comando que inicie los procesos de capa anterior, mientras el CMD se esté ejecutando, la aplicacion
+
+CONTENEDOR
+    Instancia en ejecución de lo que es una imagen, además, todo lo que se ejecute en esta capa es temporal, este va a almacenar la IMAGEN, VOLUMENES y REDES, esto sería un proceso aislado no consumiría que un proceso común
