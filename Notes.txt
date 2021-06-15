@@ -9,6 +9,10 @@ docker history -H nombreImagen:tag = Para las ver capas que fueron creadas
 docker run -d --name nombreContenedor nombreImagen:tag = Para crear un contenedor
 
 docker run -d --name nombreContenedor -p puertoLocal:puertoContenedor nombreImagen:tag = Para crear un contenedor con puerto
+
+docker images -a = Mostrar todas las imagenes
+
+
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -58,3 +62,9 @@ ENV / WORKDIR / EXPOSE
     -ENV nombreVariable valorVariable = 
     -WORKDIR = Donde estamos trabajando actualmente
     -EXPOSE = Usar un puerto distinto al que usaria apache, pero al hacer esto, se tendria que modificar
+
+LABEL / USER / VOLUME
+    -LABELS = Son para poder agregar informacion en cualquier parte del codigo
+    -USER = Que usuario va a usar
+    -VOLUME = Manera de colocar los datos persistentes dentro del contenedor
+
