@@ -45,3 +45,16 @@ CREANDO UNA IMAGEN
             1-docker build -t o --tag nombreTag . = Para construir imagenes tomando como base un Dockerfile, con el . se le dice que tome el Dockerfile que tengamos
             2-CMD nombreServicio DFOREGROUND = Para mantener corriendo el CMD
             3-Paso 1
+
+DOCKERFILE: Archivo donde se realizan las configuraciones de la imagen
+
+FROM / RUN / COPY / ADD
+    -FROM = SO
+    -RUN = Lineas de comando, se instalan los paquetes
+    -COPY rutaFolder/archivo archivoDondeSeGuardará = Copiar archivos de la máquina hacia la imagen
+    -ADD fuenteURL/ruta archivoDondeSeGuardará = No permite agregar directamente urls's hacia un archivo
+
+ENV / WORKDIR / EXPOSE
+    -ENV nombreVariable valorVariable = 
+    -WORKDIR = Donde estamos trabajando actualmente
+    -EXPOSE = Usar un puerto distinto al que usaria apache, pero al hacer esto, se tendria que modificar
