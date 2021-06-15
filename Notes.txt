@@ -1,4 +1,15 @@
 -----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------Otros comandos
+docker rm -fv nombreContenedor = Elimina un contenedor
+
+docker ps [-a] = Para ver los contenedores que están corriendo, con el -a es para verlos todos apagados/corriendo
+
+docker history -H nombreImagen:tag = Para las ver capas que fueron creadas
+
+docker run -d --name nombreContenedor nombreImagen:tag = Para crear un contenedor
+
+docker run -d --name nombreContenedor -p puertoLocal:puertoContenedor nombreImagen:tag = Para crear un contenedor con puerto
+-----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
 DOCKER
@@ -18,3 +29,19 @@ IMAGEN
 
 CONTENEDOR
     Instancia en ejecución de lo que es una imagen, además, todo lo que se ejecute en esta capa es temporal, este va a almacenar la IMAGEN, VOLUMENES y REDES, esto sería un proceso aislado no consumiría que un proceso común
+
+-----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------Docker Images
+Ir al sitio del https://hub.docker.com/ para descargar imagenes
+    -docker pull nombreImagen[:versionEspecifica(este paso del tag es opcional)]
+    -docker images | grep nombreImagen: Para ver la imagenes que tengo instaladas de la imagen especificada
+
+CREANDO UNA IMAGEN
+    -vi Dockerfile => preciona la tecla ESC, luego digita ":WQ" => abrir con el editor preferido
+    -1 Capa
+        -FROM nombreImagen:tag
+    -2 Capa
+        -Instalando programas
+            1-docker build -t o --tag nombreTag . = Para construir imagenes tomando como base un Dockerfile, con el . se le dice que tome el Dockerfile que tengamos
+            2-CMD nombreServicio DFOREGROUND = Para mantener corriendo el CMD
+            3-Paso 1
