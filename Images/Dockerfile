@@ -10,14 +10,15 @@ LABEL vendor=yo
 RUN yum install httpd -y
 
 #Dirección donde estamos trabajando
-WORKDIR /var/www/html
+#WORKDIR /var/www/html
 
-COPY startbootstrap-freelancer-master .
+COPY startbootstrap-freelancer-master /var/www/html
 #ADD startbootstrap-freelancer-master /var/www/html
 
-RUN echo "$(whoami)" > ./user1.html
+RUN echo "$(whoami)" > /var/www/html/user1.html
 
-RUN useradd jafeth #Agrega un nuevo usuario
+#Agrega un nuevo usuario
+RUN useradd jafeth
 
 #cambia al usuario nuevo
 USER jafeth
@@ -28,11 +29,14 @@ RUN echo "$(whoami)" > /tmp/user2.html
 USER root
 
 #copia el archivo
-RUN cp /tmp/user2.html ./user2.html
+RUN cp /tmp/user2.html /var/www/html/user2.html
 
 #De esta forma se crean variables y pueden ser utilizadas
 ENV contenido pruebassss
-RUN echo "$contenido" > ./prueba.html
+RUN echo "$contenido" > /var/www/html/prueba.html
 
 #Ejecutar el servicio de Apache en 1 plano
-CMD apachectl -DFOREGROUND
+#CMD apachectl -DFOREGROUND
+COPY run.sh /run.sh
+#RUN chmod 744 run.sh
+CMD sh /run.sh

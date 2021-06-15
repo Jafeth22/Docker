@@ -12,7 +12,7 @@ docker run -d --name nombreContenedor -p puertoLocal:puertoContenedor nombreImag
 
 docker images -a = Mostrar todas las imagenes
 
-
+docker logs -f nombreContenedor = Muestra el log
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -54,7 +54,7 @@ DOCKERFILE: Archivo donde se realizan las configuraciones de la imagen
 
 FROM / RUN / COPY / ADD
     -FROM = SO
-    -RUN = Lineas de comando, se instalan los paquetes
+    -RUN = Lineas de comando, se instalan los paquetes y para configuraciones
     -COPY rutaFolder/archivo archivoDondeSeGuardará = Copiar archivos de la máquina hacia la imagen
     -ADD fuenteURL/ruta archivoDondeSeGuardará = No permite agregar directamente urls's hacia un archivo
 
@@ -68,3 +68,6 @@ LABEL / USER / VOLUME
     -USER = Que usuario va a usar
     -VOLUME = Manera de colocar los datos persistentes dentro del contenedor
 
+CMD / DOCKERIGNORE
+    -CMD = Comando que se ejecuta cuando se crea un contenedor
+    -DOCKERIGNORE = Ignorar archivos que nosotros queramos
