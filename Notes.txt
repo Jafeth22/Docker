@@ -6,6 +6,8 @@ docker rm -fv nombreContenedor = Elimina un contenedor
 
 docker rmi nombreImagen:tag = Para eliminar una imagen con su tiqueta
 
+docker rmi ID = Para eliminar una imagen con su ID
+
 docker ps [-a] = Para ver los contenedores que están corriendo, con el -a es para verlos todos apagados/corriendo
 
 docker history -H nombreImagen:tag = Para las ver capas que fueron creadas
@@ -16,9 +18,14 @@ docker run -d --name nombreContenedor -p puertoLocal:puertoContenedor nombreImag
 
 docker images -a = Mostrar todas las imagenes
 
+docker images -f dangling=true/false = Va a mostrar todas las imagenes que no esten referenciadas (que sean <none>) en caso de ser true
+
+docker images -f dangling=true -q | xargs docker rmi = Para eliminar todas las imagenes que esten colgadas, el -q nos muestra solo el ID
+
 docker logs -f nombreContenedor = Muestra el log
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nombreArchivo.key -out nombreArchivo.crt = Instalar el certificado SSL
+
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -81,4 +88,5 @@ CMD / DOCKERIGNORE
 BUENAS PRACTICAS
     -Efimero: Que la imagen o contenedor sean Efimeros
 
-IMAGEN PHP + APACHE + TLS/SSL
+MULTI-STAGE-BUILD
+    -

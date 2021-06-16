@@ -1,11 +1,13 @@
 FROM centos as test
 
+#fallocate = Nos permite crear un archivo de texto del tamano indicado
 RUN fallocate -l 10M /opt/file1
 
 RUN fallocate -l 20M /opt/test2
 
 RUN fallocate -l 30M /opt/test3
 
+#Todo lo que está arriba, Docker lo asume como si fuera temporal
 FROM alpine
 
 COPY --from=test /opt/test2 /opt/myfile
