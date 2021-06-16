@@ -12,7 +12,7 @@ docker ps [-a] [-l]= Para ver los contenedores que están corriendo, -a = todos 
 
 docker history -H nombreImagen:tag = Para las ver capas que fueron creadas
 
-docker run -d [-m "cantMemoriamb/gb"] --name nombreContenedor nombreImagen:tag = Para crear un contenedor, -m = cantidad de memoria a asignar expresada en mb/gb
+docker run -d [--rm] [-m "cantMemoriamb/gb"] --name nombreContenedor nombreImagen:tag [cmd/bash] = Para crear un contenedor, -m = cantidad de memoria a asignar expresada en mb/gb, cmd/bash = se ingresa el CMD que uno quisiera usar para reemplazar el que está por defecto, --rm = Se destruye el contenedor automanticamente despues salirse o detenerse
 
 docker run -d --name nombreContenedor -p puertoLocal:puertoContenedor nombreImagen:tag = Para crear un contenedor con puerto
 
@@ -113,3 +113,4 @@ CONVERTIR UN CONTENEDOR A IMAGEN
     -docker commit nombreContenedor nombreNuevaImagen = Convierte el contenedor a una imagen sin afectar el contenedor
     -dicker run -dti --name nombreContenedor nombreImagen /bin/bash = Crea un nuevo contenedor, para la parte de /bin/bash, se debe de correr el comando -docker ps- solamente para verificar que esté usando bash o el que aparezca
 
+SOBRE ESCRIBIR UN CMD SIN UN DOCKERFILE
