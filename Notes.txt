@@ -29,6 +29,7 @@ docker stats nombreContenedor = Verificar cuanta RAM está usando el contenedor
 docker copiarArchivo nombreContenedor:pegarArchivo = Copia un archivo de nuestro local a una ruta dentro del contenedor Docker
 
 docker nombreContenedor:copiarArchivo copiarArchivoLocal = Copia un archivo dentro del contenedor para pegarlo en una ruta local
+
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -107,3 +108,8 @@ COMANDOS DE CONTENEDORES
 LIMITAR RECURSOS DEL CONTENEDOR
     -docker run --help | grep cpu: Para ver los comandos relacionados al CPU, se deberá usar la opción
         --cpuset-cpus cpusPorUsar, ej: docker run -d -m "1gb" --cpuset-cpus 0-1 --name nombreContenedor nombreImagen, use solamente el cpu 0 y 1
+
+CONVERTIR UN CONTENEDOR A IMAGEN
+    -docker commit nombreContenedor nombreNuevaImagen = Convierte el contenedor a una imagen sin afectar el contenedor
+    -dicker run -dti --name nombreContenedor nombreImagen /bin/bash = Crea un nuevo contenedor, para la parte de /bin/bash, se debe de correr el comando -docker ps- solamente para verificar que esté usando bash o el que aparezca
+
