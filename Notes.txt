@@ -22,8 +22,6 @@ docker images -f dangling=true/false = Va a mostrar todas las imagenes que no es
 
 docker images -f dangling=true -q | xargs docker rmi = Para eliminar todas las imagenes que esten colgadas, el -q nos muestra solo el ID
 
-docker logs -f nombreContenedor = Muestra el log
-
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nombreArchivo.key -out nombreArchivo.crt = Instalar el certificado SSL
 
 -----------------------------------------------------------------------------------------------------------------------
@@ -88,5 +86,17 @@ CMD / DOCKERIGNORE
 BUENAS PRACTICAS
     -Efimero: Que la imagen o contenedor sean Efimeros
 
-MULTI-STAGE-BUILD
-    -
+-----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------Contenedores
+Los cambios en los contenedores son temporales, por lo que si se quiere que un cambio sea permanentes, deben ser creados en la imagen
+
+COMANDOS DE CONTENEDORES
+    -docker logs -f nombreContenedor = Muestra el log
+
+    -docker start/stop/restart nombreContenedor/ID  = Para iniciar, detener o reiniciar un contenedor
+
+    -docker exec [-u nombreUsuario(puede ser root o el nombre del contenedor)] -ti [-e "nombreVariable=valorVariable"] nombreContenedor/ID bash = Me permitirá usar el bash dentro del contenedor, t = terminal, i = interactivo, -e = por si se quisiera agregar una variable de entorno
+
+    -exit = Salir del contenedor
+
+ 
