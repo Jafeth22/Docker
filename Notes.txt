@@ -1,6 +1,10 @@
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Otros comandos
+docker build -t nombreImagen -f nombreArchivo . = En caso que el Dockerfile tenga otro nombre, -f = Apunte a este archivo
+
 docker rm -fv nombreContenedor = Elimina un contenedor
+
+docker rmi nombreImagen:tag = Para eliminar una imagen con su tiqueta
 
 docker ps [-a] = Para ver los contenedores que están corriendo, con el -a es para verlos todos apagados/corriendo
 
@@ -13,6 +17,8 @@ docker run -d --name nombreContenedor -p puertoLocal:puertoContenedor nombreImag
 docker images -a = Mostrar todas las imagenes
 
 docker logs -f nombreContenedor = Muestra el log
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nombreArchivo.key -out nombreArchivo.crt = Instalar el certificado SSL
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -41,7 +47,7 @@ Ir al sitio del https://hub.docker.com/ para descargar imagenes
     -docker images | grep nombreImagen: Para ver la imagenes que tengo instaladas de la imagen especificada
 
 CREANDO UNA IMAGEN
-    -vi Dockerfile => preciona la tecla ESC, luego digita ":WQ" => abrir con el editor preferido
+    -nano Dockerfile o abrir con el editor preferido
     -1 Capa
         -FROM nombreImagen:tag
     -2 Capa
@@ -71,3 +77,8 @@ LABEL / USER / VOLUME
 CMD / DOCKERIGNORE
     -CMD = Comando que se ejecuta cuando se crea un contenedor
     -DOCKERIGNORE = Ignorar archivos que nosotros queramos
+
+BUENAS PRACTICAS
+    -Efimero: Que la imagen o contenedor sean Efimeros
+
+IMAGEN PHP + APACHE + TLS/SSL
