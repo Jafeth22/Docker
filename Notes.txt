@@ -8,11 +8,11 @@ docker rmi nombreImagen:tag = Para eliminar una imagen con su tiqueta
 
 docker rmi ID = Para eliminar una imagen con su ID
 
-docker ps [-a] = Para ver los contenedores que están corriendo, con el -a es para verlos todos apagados/corriendo
+docker ps [-a] [-l]= Para ver los contenedores que están corriendo, -a = todos los contenedores apagados/corriendo, -l = mostrar el último contenedor creado
 
 docker history -H nombreImagen:tag = Para las ver capas que fueron creadas
 
-docker run -d --name nombreContenedor nombreImagen:tag = Para crear un contenedor
+docker run -d [-m "cantMemoriamb/gb"] --name nombreContenedor nombreImagen:tag = Para crear un contenedor, -m = cantidad de memoria a asignar expresada en mb/gb
 
 docker run -d --name nombreContenedor -p puertoLocal:puertoContenedor nombreImagen:tag = Para crear un contenedor con puerto
 
@@ -24,6 +24,11 @@ docker images -f dangling=true -q | xargs docker rmi = Para eliminar todas las i
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nombreArchivo.key -out nombreArchivo.crt = Instalar el certificado SSL
 
+docker stats nombreContenedor = Verificar cuanta RAM está usando el contenedor
+
+docker copiarArchivo nombreContenedor:pegarArchivo = Copia un archivo de nuestro local a una ruta dentro del contenedor Docker
+
+docker nombreContenedor:copiarArchivo copiarArchivoLocal = Copia un archivo dentro del contenedor para pegarlo en una ruta local
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -99,4 +104,6 @@ COMANDOS DE CONTENEDORES
 
     -exit = Salir del contenedor
 
- 
+LIMITAR RECURSOS DEL CONTENEDOR
+    -docker run --help | grep cpu: Para ver los comandos relacionados al CPU, se deberá usar la opción
+        --cpuset-cpus cpusPorUsar, ej: docker run -d -m "1gb" --cpuset-cpus 0-1 --name nombreContenedor nombreImagen, use solamente el cpu 0 y 1
