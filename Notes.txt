@@ -169,6 +169,12 @@ REDES POR DEFECTO
     La red por defecto es Bridge, si no se especifica una, la red estará en bridge
     COMANDOS
         -docker network ls = Ver todas las redes de Docker
-        -docker network ls | grep bridge = Ver las redes que sean bridge
+        -docker network ls | grep bridge/nombreNetwork = Ver las redes que sean bridge/nombre de alguna red
         -docker network inspect nombreRed = Nos muestra toda la informacion de la red especificada
         -docker exec nombreContenedor bash -c "ping idContenedor" = Para saber si hay comunicacion entre 2 contenedores
+
+CREAR UNA RED
+    COMANDOS
+        -docker network nombreNetwork = Crear una nueva red
+        -docker network create -d driverNetwork(default) --subnet ipSubnet/24 --gateway ipGateway nombreRed
+            EJ: docker network create -d bridge --subnet 172.124.10.0/24 --gateway 172.124.10.1 docker-test-network
