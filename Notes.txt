@@ -2,6 +2,8 @@
 --------------------------------------------------Otros comandos
 docker build -t nombreImagen -f nombreArchivo . = En caso que el Dockerfile tenga otro nombre, -f = Apunte a este archivo
 
+docker rm -fv $(docker ps -aq) = Elimina TODOS los contenedores
+
 docker rm -fv nombreContenedor = Elimina un contenedor, v = elimina tambien el volumen del contenedor
 
 docker rmi nombreImagen:tag = Para eliminar una imagen con su tiqueta
@@ -33,8 +35,6 @@ docker nombreContenedor:copiarArchivo copiarArchivoLocal = Copia un archivo dent
 docker inspec nombreContenedor = Se mostrar informacion del contenedor
 
 docker info | grep -i root = Mostrara la ubicacion del document root
-
-
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -149,4 +149,10 @@ VOLUMENES DANGLING
 
     COMANDOS
         -docker volume ls [-f dangling=true/false]= Muestra todos los volumenes
-        -docker volume -f dangling=true -q | xargs docker volume rm = 
+        -docker volume -f dangling=true -q | xargs docker volume rm = Esto funciona solamente en LINUX
+
+ COMPARTIR VOLUMENES ENTRE 1 O MAS CONTENEDORES
+    Lo que se tiene que hacer es, crear un archivo bash o lo que necesite, luego copiar la ruta del archivo que se deberá de replicar en la ruta del contenedor, se lo unico que se mantiene igual es la ruta del rutaFolderLocal, el resto cambia para que no de conflictos
+    -docker run -d --name nombreContenedor -v rutaFolderLocal:rutaFolderContenedor [-p puertoLocal:puertoContenedor] nombreImagen:tag
+    EJ -docker run -d --name gen -v "$PWD/Compartido":/opttest
+       -docker run -d --name nginx -v "$PWD/Compartido":/usr/share/nginx/html -p 81:80 nginx:alpine
