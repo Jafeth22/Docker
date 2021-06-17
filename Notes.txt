@@ -14,12 +14,13 @@ docker ps [-a] [-l]= Para ver los contenedores que están corriendo, -a = todos 
 
 docker history -H nombreImagen:tag = Para las ver capas que fueron creadas
 
-docker run -d [--rm] [--network nombreNetwork] [-m "cantMemoriamb/gb"] --name nombreContenedor [-p puertoLocal:puertoContenedor] nombreImagen:tag [cmd/bash] = Para crear un contenedor. NOTA: Lo que está entre [] es opcional
+docker run -d [--rm] [--network nombreNetwork] [--ip ipNetwork] [-m "cantMemoriamb/gb"] --name nombreContenedor [-p puertoLocal:puertoContenedor] nombreImagen:tag [cmd/bash] = Para crear un contenedor. NOTA: Lo que está entre [] es opcional
         •--rm = Se destruye el contenedor automanticamente despues salirse o detenerse,
         •--network = Para agregar una red al contenedor, en caso de no agregar una red, usará la red por efecto "bridge"
         •-m = cantidad de memoria a asignar expresada en mb/gb,
         •-p = Para agregar un puerto al contenedor
         •cmd/bash = se ingresa el CMD que uno quisiera usar para reemplazar el que está por defecto, 
+        •--ip = Asignar una IP estatica al contenedor
 
 
 docker images -a = Mostrar todas las imagenes
@@ -189,3 +190,7 @@ CREAR UNA RED
 CONECTAR CONTENEDORES A DISTINTAS REDES
     COMANDOS
         -docker network connect/disconnect nombreNetwork nombreContenedor = Conectar/desconecta una red al contenedor
+
+ASIGNAR IP A UN CONTENEDOR
+    Pasos
+        -Se debe conocer cual es la subnet (docker network inspect nombreNetwork)
