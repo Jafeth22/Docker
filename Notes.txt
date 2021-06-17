@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Otros comandos
-docker build -t nombreImagen -f nombreArchivo . = En caso que el Dockerfile tenga otro nombre, -f = Apunte a este archivo
+docker build -t nombreImagen [-f nombreArchivo] . = En caso que el Dockerfile tenga otro nombre, -f = Apunte a este archivo
 
 docker rm -fv $(docker ps -aq) = Elimina TODOS los contenedores
 
@@ -14,9 +14,13 @@ docker ps [-a] [-l]= Para ver los contenedores que están corriendo, -a = todos 
 
 docker history -H nombreImagen:tag = Para las ver capas que fueron creadas
 
-docker run -d [--rm] [-m "cantMemoriamb/gb"] --name nombreContenedor nombreImagen:tag [cmd/bash] = Para crear un contenedor, -m = cantidad de memoria a asignar expresada en mb/gb, cmd/bash = se ingresa el CMD que uno quisiera usar para reemplazar el que está por defecto, --rm = Se destruye el contenedor automanticamente despues salirse o detenerse
+docker run -d [--rm] [--network nombreNetwork] [-m "cantMemoriamb/gb"] --name nombreContenedor [-p puertoLocal:puertoContenedor] nombreImagen:tag [cmd/bash] = Para crear un contenedor. NOTA: Lo que está entre [] es opcional
+        •--rm = Se destruye el contenedor automanticamente despues salirse o detenerse,
+        •--network = Para agregar una red al contenedor, en caso de no agregar una red, usará la red por efecto "bridge"
+        •-m = cantidad de memoria a asignar expresada en mb/gb,
+        •-p = Para agregar un puerto al contenedor
+        •cmd/bash = se ingresa el CMD que uno quisiera usar para reemplazar el que está por defecto, 
 
-docker run -d --name nombreContenedor -p puertoLocal:puertoContenedor nombreImagen:tag = Para crear un contenedor con puerto
 
 docker images -a = Mostrar todas las imagenes
 
@@ -35,6 +39,10 @@ docker nombreContenedor:copiarArchivo copiarArchivoLocal = Copia un archivo dent
 docker inspec nombreContenedor = Se mostrar informacion del contenedor
 
 docker info | grep -i root = Mostrara la ubicacion del document root
+
+docker exec nombreContenedor bash -c "ping idContenedor/nombreContenedor" = Para saber si hay comunicacion entre 2 contenedores
+
+docker network rm nombreNetwork = Para eliminar redes
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -171,10 +179,13 @@ REDES POR DEFECTO
         -docker network ls = Ver todas las redes de Docker
         -docker network ls | grep bridge/nombreNetwork = Ver las redes que sean bridge/nombre de alguna red
         -docker network inspect nombreRed = Nos muestra toda la informacion de la red especificada
-        -docker exec nombreContenedor bash -c "ping idContenedor" = Para saber si hay comunicacion entre 2 contenedores
 
 CREAR UNA RED
     COMANDOS
         -docker network nombreNetwork = Crear una nueva red
         -docker network create -d driverNetwork(default) --subnet ipSubnet/24 --gateway ipGateway nombreRed
             EJ: docker network create -d bridge --subnet 172.124.10.0/24 --gateway 172.124.10.1 docker-test-network
+
+CONECTAR CONTENEDORES A DISTINTAS REDES
+    COMANDOS
+        -docker network connect/disconnect nombreNetwork nombreContenedor = Conectar/desconecta una red al contenedor
