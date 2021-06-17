@@ -30,6 +30,8 @@ docker copiarArchivo nombreContenedor:pegarArchivo = Copia un archivo de nuestro
 
 docker nombreContenedor:copiarArchivo copiarArchivoLocal = Copia un archivo dentro del contenedor para pegarlo en una ruta local
 
+docker inspec nombreContenedor = Se mostrar informacion del contenedor
+
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -113,4 +115,14 @@ CONVERTIR UN CONTENEDOR A IMAGEN
     -docker commit nombreContenedor nombreNuevaImagen = Convierte el contenedor a una imagen sin afectar el contenedor
     -dicker run -dti --name nombreContenedor nombreImagen /bin/bash = Crea un nuevo contenedor, para la parte de /bin/bash, se debe de correr el comando -docker ps- solamente para verificar que esté usando bash o el que aparezca
 
-SOBRE ESCRIBIR UN CMD SIN UN DOCKERFILE
+
+-----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------Docker Volumenes
+Permiten almacenar data persistente del contenedor, es decir, le indicamos a Docker que no borre la informacion de las carpetas que nosotros le decimos, una vez hayamos detenido el contedor
+Tipos
+    -HOST = Son los que se almacenan en el docker host y estan en la ubicacion que elijamos en el Dockerfile
+    -ANONYMOUS = Docker genera una carpeta random y ahi guarda la informacion aleatoriamente
+    -NAMED VOLUMES = Son carpetas administradas meramente por Docker y tienen un nombre
+
+VOLUMENES HOST
+    -docker run -d --name db -p puertoLocal:puertoContenedor -e "MYSQL_ROOT_PASSWORD=nuevaContrasenia" -v dirLocal:dirContenedor nombreImagen:tag = Lo que está en la dir local, se mapee a la dir del contenedor y la informacion se va a guardar en esa direccion, por lo que si se elimina el contenedor o se detiene, la informacion ya quedó almacenda en ese lugar
