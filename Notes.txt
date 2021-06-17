@@ -156,3 +156,19 @@ VOLUMENES DANGLING
     -docker run -d --name nombreContenedor -v rutaFolderLocal:rutaFolderContenedor [-p puertoLocal:puertoContenedor] nombreImagen:tag
     EJ -docker run -d --name gen -v "$PWD/Compartido":/opttest
        -docker run -d --name nginx -v "$PWD/Compartido":/usr/share/nginx/html -p 81:80 nginx:alpine
+
+-----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------Redes
+Tipos de Redes
+    Bridge
+    Host
+    None
+    Overlay
+
+REDES POR DEFECTO
+    La red por defecto es Bridge, si no se especifica una, la red estará en bridge
+    COMANDOS
+        -docker network ls = Ver todas las redes de Docker
+        -docker network ls | grep bridge = Ver las redes que sean bridge
+        -docker network inspect nombreRed = Nos muestra toda la informacion de la red especificada
+        -docker exec nombreContenedor bash -c "ping idContenedor" = Para saber si hay comunicacion entre 2 contenedores
