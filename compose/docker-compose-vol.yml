@@ -1,0 +1,18 @@
+version: '3'
+#La version tiene que ser obligatoria
+services:
+#Los servicios son obligatorios
+    web:
+        container_name: nginx1
+        ports:
+            - "80:80"
+        #Se asigna al contenedor de esta forma
+        volumes:
+            - "vol2:/usr/share/nginx/html "
+        image: nginx
+volumes:
+    #Creacion del volumen
+    vol2:
+#Opcionales
+#volumes #opcionales
+#networks

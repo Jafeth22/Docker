@@ -6,7 +6,9 @@ services:
         container_name: nginx1
         ports:
             - "80:80"
+        #Creacion de volumen HOST
+        #rutaLocal:rutaContenedor
+        #rutaLocal = Donde estan almacenados los volumenes, para verificar la ruta, ejecutar: docker info | grep -i root
+        volumes:
+            - "rutaLocal:/usr/share/nginx/html "
         image: nginx
-#Opcionales
-#volumes #opcionales
-#networks
