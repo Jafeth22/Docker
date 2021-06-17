@@ -143,4 +143,10 @@ VOLUMENES NOMBRADOS
     COMANDOS
         -docker volume create nombreVolumen = Se creará un nuevo volumen y se almacenará en el ruta que se muestre en muestre con el comando "docker info | grep -i root"
         -docker run -d --name db -p puertoLocal:puertoContenedor -e "MYSQL_ROOT_PASSWORD=nuevaContrasenia" -v nombreVolumen:dirContenedor nombreImagen:tag = En lugar de mapear a una direccion, mapea al volumen creado, para este caso, no afecta si se ejecuta el comando de eliminar el Contenedor con el volumen
-        
+
+VOLUMENES DANGLING
+    Volumenes que no están en uso, no están usandos por ningun contenedor
+
+    COMANDOS
+        -docker volume ls [-f dangling=true/false]= Muestra todos los volumenes
+        -docker volume -f dangling=true -q | xargs docker volume rm = 
