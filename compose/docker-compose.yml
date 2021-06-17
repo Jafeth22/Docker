@@ -1,0 +1,12 @@
+version: '3'
+#La version tiene que ser obligatoria
+services:
+#Los servicios son obligatorios
+    web:
+        container_name: nginx1
+        ports:
+            - "80:80"
+        image: nginx
+#Opcionales
+#volumes #opcionales
+#networks
