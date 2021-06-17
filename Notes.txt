@@ -16,7 +16,7 @@ docker history -H nombreImagen:tag = Para las ver capas que fueron creadas
 
 docker run -d [--rm] [--network nombreNetwork] [--ip ipNetwork] [-m "cantMemoriamb/gb"] --name nombreContenedor [-p puertoLocal:puertoContenedor] nombreImagen:tag [cmd/bash] = Para crear un contenedor. NOTA: Lo que está entre [] es opcional
         •--rm = Se destruye el contenedor automanticamente despues salirse o detenerse,
-        •--network = Para agregar una red al contenedor, en caso de no agregar una red, usará la red por efecto "bridge"
+        •--network = Para agregar una red al contenedor, en caso de no agregar una red, usará la red por efecto "bridge", puede agregarse la red HOST
         •-m = cantidad de memoria a asignar expresada en mb/gb,
         •-p = Para agregar un puerto al contenedor
         •cmd/bash = se ingresa el CMD que uno quisiera usar para reemplazar el que está por defecto, 
@@ -194,3 +194,6 @@ CONECTAR CONTENEDORES A DISTINTAS REDES
 ASIGNAR IP A UN CONTENEDOR
     Pasos
         -Se debe conocer cual es la subnet (docker network inspect nombreNetwork)
+
+RED HOST
+    El contenedor usará el mismo IP del servidor real que tengamos.
