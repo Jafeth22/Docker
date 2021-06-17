@@ -32,6 +32,8 @@ docker nombreContenedor:copiarArchivo copiarArchivoLocal = Copia un archivo dent
 
 docker inspec nombreContenedor = Se mostrar informacion del contenedor
 
+docker info | grep -i root = Mostrara la ubicacion del document root
+
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -126,3 +128,7 @@ Tipos
 
 VOLUMENES HOST
     -docker run -d --name db -p puertoLocal:puertoContenedor -e "MYSQL_ROOT_PASSWORD=nuevaContrasenia" -v dirLocal:dirContenedor nombreImagen:tag = Lo que está en la dir local, se mapee a la dir del contenedor y la informacion se va a guardar en esa direccion, por lo que si se elimina el contenedor o se detiene, la informacion ya quedó almacenda en ese lugar
+
+VOLUMENES ANONIMOS
+    -docker info | grep -i root = Mostrará la Ubicación del root Docker, dentro de esta carpeta Docker guarda los datos de los Volumene Anonimos (porque el nombre de la carpeta es asignado por docker), luego se ejecuta el comando de VOLUMENES HOST
+
