@@ -2,7 +2,7 @@
 --------------------------------------------------Otros comandos
 docker build -t nombreImagen -f nombreArchivo . = En caso que el Dockerfile tenga otro nombre, -f = Apunte a este archivo
 
-docker rm -fv nombreContenedor = Elimina un contenedor
+docker rm -fv nombreContenedor = Elimina un contenedor, v = elimina tambien el volumen del contenedor
 
 docker rmi nombreImagen:tag = Para eliminar una imagen con su tiqueta
 
@@ -33,6 +33,7 @@ docker nombreContenedor:copiarArchivo copiarArchivoLocal = Copia un archivo dent
 docker inspec nombreContenedor = Se mostrar informacion del contenedor
 
 docker info | grep -i root = Mostrara la ubicacion del document root
+
 
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
@@ -117,7 +118,6 @@ CONVERTIR UN CONTENEDOR A IMAGEN
     -docker commit nombreContenedor nombreNuevaImagen = Convierte el contenedor a una imagen sin afectar el contenedor
     -dicker run -dti --name nombreContenedor nombreImagen /bin/bash = Crea un nuevo contenedor, para la parte de /bin/bash, se debe de correr el comando -docker ps- solamente para verificar que esté usando bash o el que aparezca
 
-
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Docker Volumenes
 Permiten almacenar data persistente del contenedor, es decir, le indicamos a Docker que no borre la informacion de las carpetas que nosotros le decimos, una vez hayamos detenido el contedor
@@ -126,9 +126,21 @@ Tipos
     -ANONYMOUS = Docker genera una carpeta random y ahi guarda la informacion aleatoriamente
     -NAMED VOLUMES = Son carpetas administradas meramente por Docker y tienen un nombre
 
+COMANDOS--------------------
+    -docker volume ls = Muestra todos los volumenes
+    -docker volume rm IdVolume = Elimina el volumen especificado
+
+
 VOLUMENES HOST
     -docker run -d --name db -p puertoLocal:puertoContenedor -e "MYSQL_ROOT_PASSWORD=nuevaContrasenia" -v dirLocal:dirContenedor nombreImagen:tag = Lo que está en la dir local, se mapee a la dir del contenedor y la informacion se va a guardar en esa direccion, por lo que si se elimina el contenedor o se detiene, la informacion ya quedó almacenda en ese lugar
 
 VOLUMENES ANONIMOS
     -docker info | grep -i root = Mostrará la Ubicación del root Docker, dentro de esta carpeta Docker guarda los datos de los Volumene Anonimos (porque el nombre de la carpeta es asignado por docker), luego se ejecuta el comando de VOLUMENES HOST
 
+VOLUMENES NOMBRADOS
+    Es una combinacion de los volumenes Anonimos y de Host
+
+    COMANDOS
+        -docker volume create nombreVolumen = Se creará un nuevo volumen y se almacenará en el ruta que se muestre en muestre con el comando "docker info | grep -i root"
+        -docker run -d --name db -p puertoLocal:puertoContenedor -e "MYSQL_ROOT_PASSWORD=nuevaContrasenia" -v nombreVolumen:dirContenedor nombreImagen:tag = En lugar de mapear a una direccion, mapea al volumen creado, para este caso, no afecta si se ejecuta el comando de eliminar el Contenedor con el volumen
+        
