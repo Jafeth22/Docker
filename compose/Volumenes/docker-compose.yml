@@ -1,0 +1,11 @@
+version: '3'
+services:
+    db:
+        image: mysql:5.7
+        container_name: mysql
+        ports:
+            - "3306:3306"
+        env_file: common.env
+        #La linea de arriba y abajo es lo mismo, solo que la de arriba obtiene la informacion de un archivo
+        #environment:
+        #    - "MYSQL_ROOT_PASSWORD=12345678"
