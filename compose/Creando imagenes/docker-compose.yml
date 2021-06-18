@@ -1,0 +1,16 @@
+version: '3'
+#La version tiene que ser obligatoria
+services:
+#Los servicios son obligatorios\
+    #Esta seccion puede tener otro nombre
+    web:
+        container_name: dc_creandoImagenes
+        image: dc_imagenes
+        #build = construir imagenes
+        #build: . #En este caso, busca el archivo Dockerfile en la misma ruta
+        #Esto es en caso que el Dockerfile esté en otra carpeta o se llame distinto
+        build:
+            #context = Donde se ubica el archivo Dockerfile
+            context: . 
+            #dockerfile = Nombre del archivo Dockerfile
+            dockerfile: Dockerfile2

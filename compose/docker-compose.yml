@@ -1,7 +1,8 @@
 version: '3'
 #La version tiene que ser obligatoria
 services:
-#Los servicios son obligatorios
+#Los servicios son obligatorios\
+    #Esta seccion puede tener otro nombre
     web:
         container_name: nginx1
         ports:

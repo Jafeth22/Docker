@@ -44,6 +44,8 @@ docker info | grep -i root = Mostrara la ubicacion del document root
 docker exec nombreContenedor bash -c "ping idContenedor/nombreContenedor" = Para saber si hay comunicacion entre 2 contenedores
 
 docker network rm nombreNetwork = Para eliminar redes
+
+docker-compose build = Para construir imagenes con docker-compose
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
