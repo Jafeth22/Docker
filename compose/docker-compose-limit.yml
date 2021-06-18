@@ -1,0 +1,8 @@
+version: '2'
+services:
+    web:
+        container_name: dc_limitarRecursos
+        #De esta forma se limitan los recursos del sistema
+        mem_limit: 20m
+        cpuset: "0"
+        image: nginx:alpine
