@@ -47,7 +47,9 @@ docker network rm nombreNetwork = Para eliminar redes
 
 docker-compose build = Para construir imagenes con docker-compose
 
-docker-compose [-f nombreArchivoDokerCompose] up -d = Esto en caso que se cambie el nombre del archivo docker-compose.yml
+docker-compose [-p nombrePrefijo] [-f nombreArchivoDokerCompose] up -d = En caso que el nombre del archivo docker-compose.yml sea diferente
+    •-p = Para cambiar el nombre del prefijo del proyecto
+    •-f = En este caso para que lea el nombre del archivo
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 
@@ -214,4 +216,3 @@ COMANDOS
     -docker-compose down = Elimina el docker compose
     NOTA: Tiene que estar dentro del folder para poder correr los comandos
 
-POLITICAS DE REINICIO DE CONTENEDORES
