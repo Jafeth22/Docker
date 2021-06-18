@@ -46,6 +46,8 @@ docker exec nombreContenedor bash -c "ping idContenedor/nombreContenedor" = Para
 docker network rm nombreNetwork = Para eliminar redes
 
 docker-compose build = Para construir imagenes con docker-compose
+
+docker-compose [-f nombreArchivoDokerCompose] up -d = Esto en caso que se cambie el nombre del archivo docker-compose.yml
 -----------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------Introducción
 

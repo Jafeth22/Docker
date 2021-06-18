@@ -1,0 +1,11 @@
+version: '3'
+#La version tiene que ser obligatoria
+services:
+#Los servicios son obligatorios\
+    #Esta seccion puede tener otro nombre
+    web:
+        image: centos
+        #De esta forma se cambia el CMD por defecto
+        command: python -m SimpleHTTPServer 8080
+        ports:
+            - "8080:8080"
