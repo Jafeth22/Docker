@@ -1,0 +1,25 @@
+version: '3'
+#La version tiene que ser obligatoria
+services:
+#Los servicios son obligatorios
+    hola:
+        container_name: dc-Redes
+        ports:
+            - "80:80"
+        image: httpd
+        #De esta forma se incluye
+        networks:
+            - net-test
+    #Creacion de otro contenedor
+    mundo:
+        container_name: dc-Redes2
+        ports:
+            - "81:80"
+        image: httpd
+        #De esta forma se incluye
+        networks:
+            - net-test
+#De esta forma se crea una red
+networks:
+    net-test:
+#Al momento de crease la red, tomará el nombre de la carpeta+nombre que se le agrego, en este caso seria: redes_net-test
