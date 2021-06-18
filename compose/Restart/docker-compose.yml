@@ -1,0 +1,10 @@
+version: '3'
+services:
+    test:
+        container_name: restart-test
+        image: restart-image
+        build: . 
+        #restart: no #NO se reinicia el contenedor
+        #restart: always #SIEMPRE se va a reiniciar
+        #restart: unless-stopped #Se detiene solamente si se hace de forma manual
+        #restart: on-failure #Reinicia en caso que haya dado error

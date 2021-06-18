@@ -213,3 +213,5 @@ COMANDOS
     -docker-compose up -d = Para correr los archivos de docker-compose.yml.
     -docker-compose down = Elimina el docker compose
     NOTA: Tiene que estar dentro del folder para poder correr los comandos
+
+POLITICAS DE REINICIO DE CONTENEDORES
