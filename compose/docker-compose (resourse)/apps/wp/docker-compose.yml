@@ -1,16 +1,16 @@
-version: '3'
+version: "3"
 
 services:
   db:
     container_name: wp-mysql
     image: mysql:5.7
     volumes:
-       - $PWD/data:/var/lib/mysql
+      - $PWD/data:/var/lib/mysql
     environment:
-       MYSQL_ROOT_PASSWORD: 12345678
-       MYSQL_DATABASE: wordpress
-       MYSQL_USER: wordpress
-       MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
     ports:
       - "3306:3306"
     networks:

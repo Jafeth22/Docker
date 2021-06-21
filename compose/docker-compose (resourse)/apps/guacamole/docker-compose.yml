@@ -15,6 +15,7 @@ services:
       - net
     image: guacamole/guacd
     depends_on:
+      #Aca indica que dependerá del servicio de arriba
       - db
   web:
     container_name: guacamole-web
