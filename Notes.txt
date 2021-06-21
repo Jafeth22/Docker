@@ -216,3 +216,14 @@ COMANDOS
     -docker-compose down = Elimina el docker compose
     NOTA: Tiene que estar dentro del folder para poder correr los comandos
 
+
+-----------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------Docker Registry
+Es un servicio para poder bajar o subir imagenes
+
+Como de forma opcional pero de buena practica, es bueno crear un volumen para mantener la informacion creada
+
+COMANDOS
+    -docker tag nombreImagen:tag localhost/IP:puerto/nombreNuevo = Esto seria para taggear la imagen
+    -docker push nombreTag = Subir una imagen, en este caso, se utiliza el nombre de la imagen creada anteriormente
+    -docker pull nombreImagen = Para descargar la imagen
