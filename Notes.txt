@@ -14,7 +14,8 @@ docker ps [-a] [-l]= Para ver los contenedores que están corriendo, -a = todos 
 
 docker history -H nombreImagen:tag = Para las ver capas que fueron creadas
 
-docker run -d [--rm] [--network nombreNetwork] [--ip ipNetwork] [-m "cantMemoriamb/gb"] --name nombreContenedor [-p puertoLocal:puertoContenedor] nombreImagen:tag [cmd/bash] = Para crear un contenedor. NOTA: Lo que está entre [] es opcional
+docker run [-d] [--rm] [--network nombreNetwork] [--ip ipNetwork] [-m "cantMemoriamb/gb"] --name nombreContenedor [-p puertoLocal:puertoContenedor] nombreImagen:tag [cmd/bash] = Para crear un contenedor. NOTA: Lo que está entre [] es opcional
+        •-d = Para correr el contenedor en 2 plano
         •--rm = Se destruye el contenedor automanticamente despues salirse o detenerse,
         •--network = Para agregar una red al contenedor, en caso de no agregar una red, usará la red por efecto "bridge", puede agregarse la red HOST/NONE
         •-m = cantidad de memoria a asignar expresada en mb/gb,
